@@ -10,7 +10,7 @@ assignees: ''
 **Don't change anything to the left of a `:`**
 
 Coffee Shop: 
-Location: 
+Address: 
 Drink Name: 
 Drink Price: 
 Coffee Strength (0-10): 
