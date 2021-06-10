@@ -15,3 +15,4 @@ jobs:
       run: |
         env
         export
+        cat $GITHUB_EVENT_PATH
