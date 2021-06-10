@@ -1,0 +1,17 @@
+name: Handle new case files
+
+on:
+  issues: 
+    types: [opened]
+
+jobs:
+  new-case-file:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - name: Print env
+      run: |
+        env
+        export
