@@ -10,9 +10,10 @@ assignees: ''
 **Don't change anything to the left of a `:`**
 
 Coffee Shop: 
+Location: 
 Drink Name: 
 Drink Price: 
 Coffee Strength (0-10): 
 Chocolate Strength (0-10): 
 Whip Cream (None, Crumbly, or Smooth): 
-Comments:
+Notes: 
