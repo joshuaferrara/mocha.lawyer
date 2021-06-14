@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -151,13 +150,23 @@ module.exports = {
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>${settings.title}</title>
+
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+
+            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+              integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+              crossorigin=""/>
+
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+              integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+              crossorigin=""></script>
           </head>
           <body>
             <noscript>
               Enable JavaScript to use Frontend toolbox
             </noscript>
 
-            <div id="app"></div>
+            <div id="app" style="height: 100%"></div>
             ${htmlWebpackPlugin.tags.bodyTags}
           </body>
         </html>
@@ -166,7 +175,6 @@ module.exports = {
     ...(mode !== 'production'
       ? [
           new webpack.HotModuleReplacementPlugin(),
-          new OpenBrowserPlugin({ url: `http://localhost:${port}` }),
         ]
       : [
           new MiniCssExtractPlugin(),
