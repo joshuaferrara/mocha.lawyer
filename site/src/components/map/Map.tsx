@@ -1,16 +1,51 @@
 import { LatLng } from 'leaflet';
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
-  LayersControl
+  LayersControl,
+  Tooltip
 } from 'react-leaflet'
 import LocateControl from './LocateControl';
+import YAML from 'yaml'
 
 export default function Map() {
+  const [isLoading, setLoading] = useState(true);
+  const [reviews, setReviews] = useState([]);
   const center = new LatLng(20, 0);
+
+  useEffect(() => {
+    fetch("reviews.yml")
+      .then((result) => result.text())
+      .then((fileContents) => {
+        let data = YAML.parseAllDocuments(fileContents);
+        setReviews(data.map((document, idx) => {
+          return {
+            key: idx,
+            ...document.toJSON()
+          }
+        }));
+        setLoading(false);
+      });
+  }, []);
+
+  let markers = null;
+  if (!isLoading) {
+    markers = reviews.map((review, idx) => 
+      <Marker position={new LatLng(review.latitude, review.longitude)} key={idx} >
+        <Tooltip>{review.name}</Tooltip>
+        <Popup>
+
+          <a href={`https://www.google.com/maps/dir/?api=1&destination=${review.address}`} target="_blank">Directions</a>
+        </Popup>
+      </Marker>
+    )
+  }
+
   return (
     <MapContainer 
       style={{ height: 'calc(100% - 64px)' }}
@@ -32,12 +67,8 @@ export default function Map() {
             url="https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png"
           />
         </LayersControl.BaseLayer>
-        <LayersControl.Overlay name="Marker with popup">
-          <Marker position={center}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
+        <LayersControl.Overlay checked name="Coffee">
+          {markers}
         </LayersControl.Overlay>
       </LayersControl>
     </MapContainer>

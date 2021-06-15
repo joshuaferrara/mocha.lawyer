@@ -6,6 +6,7 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CnameWebpackPlugin = require('cname-webpack-plugin');
+const WebpackConcatPlugin = require('webpack-concat-files-plugin');
 const settings = require('./settings');
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
@@ -119,6 +120,16 @@ module.exports = {
         test: /\.(svg|png|jpg|gif|woff|woff2|otf|ttf|eot)$/,
         loader: 'file-loader',
       },
+
+      {
+        test: /\.ya?ml$/,
+        use: {
+          loader: 'yaml-loader',
+          options: {
+            asStream: true
+          },
+        },
+      }
     ],
   },
 
@@ -140,6 +151,14 @@ module.exports = {
         windows: false,
       },
     }),
+    new WebpackConcatPlugin({
+      bundles: [
+        {
+          src: path.join(__dirname, 'reviews/**/*.yml'),
+          dest: './dist/reviews.yml',
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       templateContent: ({ htmlWebpackPlugin }) => `
         <!DOCTYPE html>
@@ -149,21 +168,20 @@ module.exports = {
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
+
             <title>${settings.title}</title>
 
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
               integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
               crossorigin=""/>
-
             <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
               integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
               crossorigin=""></script>
           </head>
           <body>
             <noscript>
-              Enable JavaScript to use Frontend toolbox
+              Enable JavaScript to use Mocha Laywer
             </noscript>
 
             <div id="app" style="height: 100%"></div>
