@@ -19,6 +19,8 @@ jobs:
       with:
         token: ${{ secrets.PR_TOKEN }}
         title: New coffee case \#${{ github.event.issue.number }}
+        branch: new-case-${{ github.event.issue.number }}
+        delete-branch: true
         body: |
           Author: @${{ github.event.issue.user.login }}
           Closes #${{ github.event.issue.number }}
