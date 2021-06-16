@@ -1,0 +1,8 @@
+name: Redeploy
+on: push
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: cd site && npm i && npm run deploy
