@@ -1,5 +1,5 @@
 module.exports = {
   title: 'Mocha Lawyer',
-  cname: 'mocha.laywer',
+  cname: 'mocha.lawyer',
   repoPath: null,
 };
