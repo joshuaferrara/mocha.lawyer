@@ -1,7 +1,8 @@
 name: Redeploy
-push:
-  branches:
-    - main
+on:
+  push:
+    branches:
+      - main
 jobs:
   redeploy:
     runs-on: ubuntu-latest
