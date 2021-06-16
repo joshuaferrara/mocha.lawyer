@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CnameWebpackPlugin = require('cname-webpack-plugin');
 const WebpackConcatPlugin = require('webpack-concat-files-plugin');
 const settings = require('./settings');
@@ -135,22 +134,6 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(mode) }),
-    new FaviconsWebpackPlugin({
-      logo: path.join(__dirname, './favicon.png'),
-      background: '#ffeeee',
-      icons: {
-        android: true,
-        appleIcon: true,
-        appleStartup: false,
-        coast: false,
-        favicons: true,
-        firefox: false,
-        opengraph: true,
-        twitter: false,
-        yandex: false,
-        windows: false,
-      },
-    }),
     new WebpackConcatPlugin({
       bundles: [
         {

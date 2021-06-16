@@ -3,6 +3,9 @@
 # issues are created in the mocha.lawyer git repo.
 import os
 import json
+import re
+import geocoder
+import yaml
 
 def main():
     # get path to github event file
@@ -22,7 +25,47 @@ def main():
         raise Exception("Failed to determine trigger type")
 
 def handle_issue(github_event: dict):
-    pass
+    action = github_event.get("action")
+    if action == "opened" or action == "edited":
+        issue_data = github_event.get("issue")
+        body = issue_data.get("body")
+        def findValue(key: str) -> str:
+            val_search = re.search(f"(?:{key}:)\s*(.+)", body)
+            if val_search:
+                return val_search.group(1).strip()
+            return None
+
+        # Translates "key" from GitHub issue to yml key
+        translationMap = {
+            "Coffee Shop": "name",
+            "Drink Name": "item",
+            "Drink Price": "price",
+            "Coffee Strength": "coffee-score",
+            "Chocolate Strength": "chocolate-strength",
+            "Whip Cream \(None, Crumbly, or Smooth\)": "whip-cream",
+            "Notes": "notes",
+            "Address": "address",
+        }
+
+        # Convert issue -> yaml
+        dict_out = {}
+        for key, translation in translationMap.items():
+            value = findValue(key)
+            dict_out[translation] = value
+
+        # Perform geolocation
+        g = geocoder.osm(dict_out["address"])
+        dict_out["latitude"] = g.lat
+        dict_out["longitude"] = g.lng
+
+        # Write yaml file
+        yaml_out = yaml.dump(dict_out, default_flow_style=False, explicit_start=True)
+        issue_number = issue_data.get("number")
+        yaml_out_path = os.path.join(os.getcwd(), "site", "reviews", f"{issue_number}.yml")
+        with open(yaml_out_path, "w") as f:
+            f.write(yaml_out)
+    else:
+        raise Exception(f"Action {action} unsupported")
 
 if __name__ == "__main__":
     main()
