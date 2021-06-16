@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
+    titleAbbr: {
+      textUnderlinePosition: 'under'
+    }
   }),
 );
 
@@ -31,11 +34,10 @@ export default function HomePage() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            ☕🍫🧑‍⚖️‍📝
+            <abbr className={classes.titleAbbr} title="Mocha Lawyer">☕🍫🧑‍⚖️‍📝</abbr>
           </Typography>
         </Toolbar>
       </AppBar>
-
       <Map />
     </div>
   );

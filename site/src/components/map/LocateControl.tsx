@@ -6,11 +6,10 @@ export default function LocateControl() {
     const map = useMap();
     useEffect(() => {
         const lc = new Locate({
-            startDirectly: true,
-            position: 'topright'
+            position: 'topright',
+            initialZoomLevel: 10
         });
         lc.addTo(map);
-        lc.start();
     }, []);
     return null;
 }
