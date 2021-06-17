@@ -15,6 +15,7 @@ import YAML from 'yaml'
 
 import coffeeIcon from './CoffeeIcon';
 import styles from './styles.less';
+import { Divider, Slider } from '@material-ui/core';
 
 export default function Map() {
   const [isLoading, setLoading] = useState(true);
@@ -47,12 +48,13 @@ export default function Map() {
         key={idx}
         icon={coffeeIcon} >
         <Tooltip>{review.name}</Tooltip>
-        <Popup className={styles.reviewData}>
+        <Popup className={styles.reviewData} closeButton={false}>
           <div>
             <h3>
+              <a href={`https://www.google.com/maps/dir/?api=1&destination=${review.address}`} target="_blank">🗺️</a>
               {review.name}
             </h3>
-            <hr />
+            <Divider />
             <div className={styles.reviewDataRow}>
               <div>Drink</div>
               <div>{review.item}</div>
@@ -64,7 +66,7 @@ export default function Map() {
             <div className={styles.reviewDataRow}>
               <div>☕</div>
               <div>
-                {[...Array(review["coffee-score"])].map((val, idx) => (
+                {[...Array(review["coffee-score"])].map(() => (
                   <span>⭐</span>
                 ))}
               </div>
@@ -72,7 +74,7 @@ export default function Map() {
             <div className={styles.reviewDataRow}>
               <div>🍫</div>
               <div>
-                {[...Array(review["chocolate-score"])].map((val, idx) => (
+                {[...Array(review["chocolate-score"])].map(() => (
                   <span>⭐</span>
                 ))}
               </div>
@@ -83,16 +85,37 @@ export default function Map() {
                   {review["whip-cream"]}
               </div>
             </div>
-            {!review["notes"] ? null : (
-              <div>
-                <hr />
+            <div className={styles.ratioSliderHolder}>
+              <Slider
+                defaultValue={review["coffee-to-choco"]}
+                aria-labelledby="discrete-slider-small-steps"
+                step={0.1}
+                min={-0.5}
+                max={0.5}
+                disabled
+                valueLabelDisplay="auto"
+                track={false}
+                marks={[
+                  {
+                    value: -0.5,
+                    label: '☕',
+                  },
+                  {
+                    value: 0.5,
+                    label: '🍫'
+                  }
+                ]}
+                classes={{
+                  root: styles.ratioSlider,
+                  markLabel: styles.ratioSliderMark
+                }}
+              />
+            </div>
+            {!review.notes ? null : (
+              <div className={styles.reviewNotes}>
                 {review.notes}
               </div>
             )}
-          </div>
-          <hr />
-          <div className={styles.directionsLink}>
-            <a href={`https://www.google.com/maps/dir/?api=1&destination=${review.address}`} target="_blank">Directions</a>
           </div>
         </Popup>
       </Marker>

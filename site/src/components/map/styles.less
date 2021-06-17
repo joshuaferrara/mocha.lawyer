@@ -3,7 +3,21 @@
     width: 15em;
 }
 
+.reviewData > div > div {
+    margin-bottom: 0.5em;
+}
+
 .reviewData h3 {
+    margin-bottom: 0;
+}
+
+.reviewData h3 a {
+    text-decoration: none;
+    float: right;
+}
+
+.reviewData hr {
+    margin-top: 0.25em;
     margin-bottom: 0.25em;
 }
 
@@ -11,9 +25,41 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: .25em
 }
 
+.reviewNotes {
+    background-color: #FFD707;
+    padding: 0.5em;
+    margin-bottom: 2em;
+    position: relative;
+    text-align: justify;
+}
+
+.reviewNotes:after {
+    content: "";
+    position: absolute;
+    bottom: -1em;
+    left: 0;
+    right: 1em;
+    border-width: .5em;
+    border-style: solid;
+    border-color: rgb(255,215,7);
+ }
+
+ .reviewNotes:before {
+    content: "";
+    position: absolute;
+    bottom: -1em;
+    right: 0;
+    border-width: 1em 1em 0 0;
+    border-style: solid;
+    border-color: darken(rgb(255,215,7), 10%) transparent;
+ }
+
 .directionsLink {
+    position: relative;
+    top: 0.5em;
     text-align: center;
     margin-top: 0.25em;
 }
@@ -21,4 +67,19 @@
 .coffeeMarker {
     font-size: 20px;
     text-align: center;
+}
+
+.ratioSliderHolder {
+    padding-left: 9px;
+    padding-right: 7px;
+}
+
+.ratioSlider {
+    color: #00704A !important;
+    margin-bottom: 0 !important;
+}
+
+.ratioSliderMark {
+    color: rgba(0, 0, 0, 1) !important;
+    top: 4px !important;
 }

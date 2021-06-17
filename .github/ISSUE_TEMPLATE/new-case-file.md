@@ -13,7 +13,8 @@ Coffee Shop:
 Address: 
 Drink Name: 
 Drink Price: 
-Coffee Strength (0-10): 
-Chocolate Strength (0-10): 
+Coffee-to-Choco Ratio [-0.5, 0.5]: 
+Coffee Score [0, 5]: 
+Chocolate Score [0, 5]: 
 Whip Cream (None, Crumbly, or Smooth): 
 Notes: 

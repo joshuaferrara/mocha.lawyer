@@ -40,8 +40,9 @@ def handle_issue(github_event: dict):
             "Coffee Shop": "name",
             "Drink Name": "item",
             "Drink Price": "price",
-            "Coffee Strength (0-10)": "coffee-score",
-            "Chocolate Strength (0-10)": "chocolate-strength",
+            "Coffee-to-Choco Ratio \[-0.5, 0.5\]": "coffee-to-choco",
+            "Coffee Score \[0, 5\]": "coffee-score",
+            "Chocolate Score \[0, 5\]": "chocolate-score",
             "Whip Cream \(None, Crumbly, or Smooth\)": "whip-cream",
             "Notes": "notes",
             "Address": "address",
@@ -58,12 +59,23 @@ def handle_issue(github_event: dict):
         dict_out["latitude"] = g.lat
         dict_out["longitude"] = g.lng
 
+        # Convert some things
+        number_fields = [ "coffee-to-choco", "coffee-score", "chocolate-score", "price" ]
+        for field in number_fields:
+            dict_out[field] = float(dict_out[field])
+
         # Write yaml file
         yaml_out = yaml.dump(dict_out, default_flow_style=False, explicit_start=True)
         issue_number = issue_data.get("number")
         yaml_out_path = os.path.join(os.getcwd(), "site", "reviews", f"{issue_number}.yml")
-        with open(yaml_out_path, "w") as f:
-            f.write(yaml_out)
+        if os.environ.get("DEBUG", None) == None:
+            with open(yaml_out_path, "w") as f:
+                f.write(yaml_out)
+        else:
+            # Print stuff out instead of writing to file in debug mode
+            # for development
+            print(yaml_out_path)
+            print(yaml_out)
     else:
         raise Exception(f"Action {action} unsupported")
 

@@ -5,7 +5,7 @@
       "assignee": null,
       "assignees": [],
       "author_association": "OWNER",
-      "body": "**Don't change anything to the left of a `:`**\r\n\r\nCoffee Shop: Central Perk\r\nAddress: 90 Bedford Street New York NY\r\nDrink Name: Mocha\r\nDrink Price: 3\r\nCoffee Strength (0-10): 10\r\nChocolate Strength (0-10): 10\r\nWhip Cream (None, Crumbly, or Smooth): Smooth\r\nNotes: Waittress got the order wrong but it tasted great\r\n",
+      "body": "**Don't change anything to the left of a `:`**\r\n\r\nCoffee Shop: Central Perk\r\nAddress: 90 Bedford Street New York NY\r\nDrink Name: Mocha\r\nDrink Price: 3\r\nCoffee-to-Choco Ratio [-0.5, 0.5]: 0.2\r\nCoffee Score [0, 5]: 4\r\nChocolate Score [0, 5]: 4\r\nWhip Cream (None, Crumbly, or Smooth): Smooth\r\nNotes: Waitress got the order wrong the 1st time\r\n",
       "closed_at": null,
       "comments": 0,
       "comments_url": "https://api.github.com/repos/joshuaferrara/mocha.lawyer/issues/2/comments",
