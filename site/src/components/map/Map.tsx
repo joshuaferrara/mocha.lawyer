@@ -28,7 +28,14 @@ export default function Map() {
       .then((result) => result.text())
       .then((fileContents) => {
         let data = YAML.parseAllDocuments(fileContents);
-        setReviews(data.map((document, idx) => {
+        let filtered = data.filter((item) => {
+          let itemJson = item.toJSON();
+          if (itemJson == null) return false;
+          if (itemJson != null && 'layout' in itemJson) return false;
+          return true;
+        })
+        console.log(filtered);
+        setReviews(filtered.map((document, idx) => {
           return {
             key: idx,
             ...document.toJSON()
