@@ -4,8 +4,8 @@ chocolate-score: 5.0
 coffee-score: 2.0
 coffee-to-choco: -0.2
 item: Iced Mocha
-latitude: null
-longitude: null
+latitude: 41.6458511
+longitude:  -71.2800771
 name: Test Cafe
 notes: ''
 price: 5.0
