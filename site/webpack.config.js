@@ -13,6 +13,9 @@ const port = 8262;
 const entry = path.join(__dirname, './src/index.tsx');
 const output = path.join(__dirname, './dist');
 const publicPath = mode === 'production' ? settings.repoPath || '/' : '/';
+let commitHash = require('child_process')
+  .execSync('git rev-parse --short HEAD')
+  .toString().trim();
 
 module.exports = {
   mode,
@@ -133,12 +136,15 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(mode) }),
+    new webpack.DefinePlugin({
+      __COMMIT_HASH__: JSON.stringify(commitHash),
+      'process.env.NODE_ENV': JSON.stringify(mode)
+    }),
     new WebpackConcatPlugin({
       bundles: [
         {
           src: path.join(__dirname, 'reviews/**/*.yml'),
-          dest: './dist/reviews.yml',
+          dest: `./dist/reviews-${commitHash}.yml`,
         },
       ],
     }),

@@ -22,11 +22,9 @@ export default function Map() {
   const [reviews, setReviews] = useState([]);
   const center = new LatLng(20, 0);
 
-  console.log(styles);
-
   // Get review data on mount
   useEffect(() => {
-    fetch("reviews.yml")
+    fetch(`reviews-${__COMMIT_HASH__}.yml`)
       .then((result) => result.text())
       .then((fileContents) => {
         let data = YAML.parseAllDocuments(fileContents);
