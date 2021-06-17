@@ -5,7 +5,21 @@ latitude: 33.13369498068678
 longitude: -117.2292184991483
 item: Iced Mocha
 price: 5
+coffee-to-choco: 0.2
 coffee-score: 4
-chocolate-score: 3
+chocolate-score: 4
 whip-cream: None
 notes: Cat Cafe!!
+
+---
+address: 90 Bedford Street New York NY
+chocolate-score: 4.0
+coffee-score: 4.0
+coffee-to-choco: 0.2
+item: Mocha
+latitude: 40.7323594
+longitude: -74.0052999
+name: Central Perk
+notes: Waitress got the order wrong the 1st time
+price: 3.0
+whip-cream: Smooth
