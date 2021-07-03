@@ -59,6 +59,9 @@ def handle_issue(github_event: dict):
         dict_out["latitude"] = g.lat
         dict_out["longitude"] = g.lng
 
+        # Add any extra fields
+        dict_out["author"] = issue_data.get("user", {}).get("login")
+
         # Convert some things
         number_fields = [ "coffee-to-choco", "coffee-score", "chocolate-score", "price" ]
         for field in number_fields:
