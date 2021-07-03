@@ -13,6 +13,7 @@ coffee-score: 4
 chocolate-score: 4
 whip-cream: None
 notes: Cat Cafe!!
+author: joshuaferrara
 
 ---
 address: 7740 El Camino Real, Carlsbad, CA 92009
@@ -26,6 +27,7 @@ name: Lofty Coffee
 notes: it came in a mason jar and also there is a cute dog
 price: 5.5
 whip-cream: None
+author: joshuaferrara
 
 ---
 address: 97 N. Coast HWY 101 Encinitas, CA. 92024
@@ -36,9 +38,10 @@ item: Iced Mocha
 latitude: 33.04963
 longitude: -117.294026
 name: Lofty Encinitas
-notes: very hard to taste the coffee but i've had their coffee
+notes: very hard to taste the coffee but i've had their coffee and it's good
 price: 5.5
 whip-cream: None
+author: joshuaferrara
 
 ---
 address: 110 E Central Pkwy, Cincinnati, OH 45202
@@ -52,6 +55,7 @@ name: Coffee Emporium
 notes: v spicy, has cayenne pepper, also their mugs are cute
 price: 4.25
 whip-cream: None
+author: sdamico918
 
 ---
 address: 90 Bedford Street New York NY
@@ -65,3 +69,4 @@ name: Central Perk
 notes: Waitress got the order wrong the 1st time
 price: 3.0
 whip-cream: Smooth
+author: joshuaferrara
