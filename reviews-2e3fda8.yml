@@ -41,6 +41,19 @@ price: 5.5
 whip-cream: None
 
 ---
+address: 110 E Central Pkwy, Cincinnati, OH 45202
+chocolate-score: 5.0
+coffee-score: 5.0
+coffee-to-choco: 0.2
+item: Aztec Warrior
+latitude: 39.1077479
+longitude: -84.512517
+name: Coffee Emporium
+notes: v spicy, has cayenne pepper, also their mugs are cute
+price: 4.25
+whip-cream: None
+
+---
 address: 90 Bedford Street New York NY
 chocolate-score: 4.0
 coffee-score: 4.0
