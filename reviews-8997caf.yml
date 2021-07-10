@@ -58,6 +58,20 @@ whip-cream: None
 author: sdamico918
 
 ---
+address: S, 22 Liberty St, Powell, OH 43065
+author: joshuaferrara
+chocolate-score: 4.0
+coffee-score: 4.0
+coffee-to-choco: -0.1
+item: Iced Mocha
+latitude: 40.1576521
+longitude: -83.0749113
+name: espresso22
+notes: tasted like dark chocolate and they've got some good chewable ice
+price: 4.0
+whip-cream: None
+
+---
 address: 90 Bedford Street New York NY
 chocolate-score: 4.0
 coffee-score: 4.0
