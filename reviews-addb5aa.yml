@@ -84,3 +84,17 @@ notes: Waitress got the order wrong the 1st time
 price: 3.0
 whip-cream: Smooth
 author: joshuaferrara
+
+---
+address: 127 N El Camino Real, Encinitas, CA 92024
+author: joshuaferrara
+chocolate-score: 3.0
+coffee-score: 4.0
+coffee-to-choco: -0.4
+item: Iced Mocha
+latitude: 33.0480565
+longitude: -117.2574915
+name: Isabelle Briens French Pastry Cafe
+notes: Double shot of espresso
+price: 4.55
+whip-cream: None
