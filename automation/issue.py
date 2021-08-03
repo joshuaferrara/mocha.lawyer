@@ -59,6 +59,9 @@ def handle_issue(github_event: dict):
         dict_out["latitude"] = g.lat
         dict_out["longitude"] = g.lng
 
+        # Print out URL for automation to include in PR
+        print(f"[View Lat/Lng in OpenStreetMaps](https://www.openstreetmap.org/?mlat={g.lat}&mlon={g.lng}#map=19/{g.lat}/{g.lng})")
+
         # Add any extra fields
         dict_out["author"] = issue_data.get("user", {}).get("login")
 
@@ -77,6 +80,7 @@ def handle_issue(github_event: dict):
         else:
             # Print stuff out instead of writing to file in debug mode
             # for development
+            print("--- Debug File Output ---")
             print(yaml_out_path)
             print(yaml_out)
     else:
