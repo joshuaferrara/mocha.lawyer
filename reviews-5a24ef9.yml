@@ -98,3 +98,17 @@ name: Isabelle Briens French Pastry Cafe
 notes: Double shot of espresso
 price: 4.55
 whip-cream: None
+
+---
+address: 3745 Paseo Place, San Diego, CA
+author: joshuaferrara
+chocolate-score: 3.0
+coffee-score: 4.0
+coffee-to-choco: -0.25
+item: Mocha
+latitude: 32.9519876
+longitude: -117.2349545
+name: Parakeet Cafe (One Paseo)
+notes: Added extra shot of espresso (+$1). Food was pretty tasty too.
+price: 6.5
+whip-cream: None
