@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: cd site && npm i && npm run build
+    - run: cd site && npm i --legacy-peer-deps && npm run build
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
