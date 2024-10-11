@@ -9,6 +9,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
+<<<<<<< Updated upstream
     - uses: actions/checkout@v2
     - name: Install requirements
       run: python3 -m pip install -r automation/requirements.txt
@@ -29,6 +30,28 @@ jobs:
         body: |
           Author: @${{ github.event.issue.user.login }}
           Closes #${{ github.event.issue.number }}
+=======
+      - uses: actions/checkout@v4
+      - name: Install requirements
+        run: python3 -m pip install -r automation/requirements.txt
+      - name: Run parser
+        id: run_parser
+        run: |
+          python3 automation/issue.py 2>&1 | tee parser.log
+          result_code=${PIPESTATUS[0]}
+          echo "parser-output=$(cat parser.log)" >> $GITHUB_OUTPUT
+          exit $result_code
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.PR_TOKEN }}
+          title: "New coffee case #${{ github.event.issue.number }}"
+          branch: new-case-${{ github.event.issue.number }}
+          delete-branch: true
+          body: |
+            Author: @${{ github.event.issue.user.login }}
+            Closes #${{ github.event.issue.number }}
+>>>>>>> Stashed changes
 
           ${{join(steps.run_parser.outputs.*, '\n')}}
 
