@@ -7,7 +7,7 @@
     "test": "jest",
     "prettier": "prettier 'src/**/**/*.?(js|jsx)' --write",
     "start": "webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack --progress --colors",
+    "build": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --progress --colors",
     "deploy": "npm run build && gh-pages -d dist",
     "lint": "eslint src --ext .js --ext .jsx"
   },
